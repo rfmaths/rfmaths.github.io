@@ -2522,7 +2522,7 @@ if($this->getConfig("confShowLoadTime") == true)
 ?>
 <div class="row">
 <div class="col-sm-8 text-left">
-<h4 class="no-strong"><?php if(Simplex::getConfig('confTitle') != null) print Simplex::getConfig('confTitle');?> with <a href="https://github.com/jmkim/simplex">Simplex</a></h4>
+<h4 class="no-strong"><?php if(Simplex::getConfig('confTitle') != null) print Simplex::getConfig('confTitle');?> with <a href="https://github.com/rfmaths/simplex">Simplex</a></h4>
 </div>
 
 <div class="col-sm-1 col-sm-offset-3 pull-right">
