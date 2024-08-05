@@ -34,21 +34,6 @@
 	  "End Added Code":   "",
 	  "Top Caption":      ""
       }
-  function updateURL () {
-      var t =  editors["pre0"].getValue();
-      var newl="?" + encodeURI(t).replace(/\$/g,'%24');
-      // copy to clipboard
-      var nn=document.createElement("textarea");
-      nn.value=document.location.protocol + "//" + document.location.host + document.location.pathname + newl;
-      document.body.appendChild(nn);
-      nn.select();
-      document.execCommand("copy");
-      document.body.removeChild(nn);
-      // update
-      if(newl != document.location.search){
-	  document.location.search = "?" + encodeURI(t).replace(/\$/g,'%24');
-      }
-  }
 
   function fillForm() {
       if(document.location.search == "?context") {
@@ -76,11 +61,7 @@
 
 <hr>
 <div>
-<button onclick="updateURL()">Update/Copy URL</button>
-&nbsp;&nbsp;
-<a href="https://davidcarlisle.github.io/latexcgi/">Server documentation (GitHub)</a>
-&nbsp;&nbsp;
-<a href="https://texlive.net/">TeXLive.net Home</a>
+A compléter ...
 </div>
 <hr>
 <div class="h">
