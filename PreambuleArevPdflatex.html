@@ -1,1 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>run tex snippet</title>
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.min.js"></script>
+    <style type="text/css" media="screen">
+      .ace_editor {
+	  border: 1px solid lightgray;
+	  margin-bottom: 1px !important;
+	  width: 100%;
+      }
+      div.spacer {
+	  margin-top:16px;
+      }
+      a { text-decoration:none; color:#5555FF}
+      a:hover	   {text-decoration:underline}
+    </style>
+    <script src="https://rfmaths.github.io/rfRunTex.js"></script>
+    <script>
 
+      runlatex.editorlines=40;
+      runlatex.adddefaultpreamble=true;
+      runlatex.adddefaultengine=true;
+
+      runlatex.overleafURI=null;
+      
+      runlatex.texts ={
+	  "Open in Overleaf": "Open in Overleaf",
+	  "TeXLive.net":      "TeXLive.net", 
+	  "Delete Output":    "Delete Output",
+	  "Compiling PDF":    "Compiling PDF or HTML",
+	  "Added Code":       "",
+	  "End Added Code":   "",
+	  "Top Caption":      ""
+      }
+
+  function fillForm() {
+      if(document.location.search == "?context") {
+	  editors["pre0"].setValue("% !TeX context\n\n\\starttext\n\n\\stoptext\n");
+	  editors["pre0"].clearSelection();
+      } else if(document.location.search != "") {
+	  editors["pre0"].setValue(decodeURIComponent(document.location.search.substring(1)),0);
+	  editors["pre0"].clearSelection();
+	  latexcgi("pre0");
+      }
+  }
+
+  window.addEventListener('load', fillForm, false);
+
+
+    </script>
+    <style>
+      body {margin:auto; max-width: 70em;}
+      div.h {background-color: #F5F5FF;margin: .5em 0;}
+      pre {background-color: #EEE;margin:0;padding: .5em;}
+    </style>
+    
+  </head>
+  <body>
+
+<hr>
+Cliquer sur "TeXLive.net" pour exécuter le code. Effectuer un copier/coller pour le sauvegarder.
+<hr>
+<div class="h">
+<pre id="pre0">% !TeX TS-program = pdflatex
+
+% !TeX TS-program = pdflatex
+
+\documentclass[12pt,french,a4paper]{article}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{arev}
+\usepackage{babel}
+\usepackage[warningsoff,nonamssymb]{ProfLycee}
+\useproflyclib{ecritures}
+\usepackage{customenvs}
+\usepackage{scontents}
+
+
+\begin{scontents}[overwrite,write-out=SommeCarres.py]
+	def SommeCarres(n) :
+	S = 0
+	for k in range(1,n+1):
+		S += k ** 2
+	print(S)
+\end{scontents}
+
+\begin{document}
+
+\part*{Version \hologo{pdfLaTeX}}
+
+\bigskip
+	
+\CodePythonLstFichierAlt*[6cm]{center}{SommeCarres.py}
+
+\end{document}
+</div>
+<hr>
+</body>
